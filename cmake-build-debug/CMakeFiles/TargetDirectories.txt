@@ -1,0 +1,3 @@
+/Users/georgerogers/Desktop/adventure-game/cmake-build-debug/CMakeFiles/adventure_game.dir
+/Users/georgerogers/Desktop/adventure-game/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/georgerogers/Desktop/adventure-game/cmake-build-debug/CMakeFiles/rebuild_cache.dir
