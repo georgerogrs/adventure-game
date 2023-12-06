@@ -25,7 +25,7 @@ int main() {
     Item newItem2("crowbar", "A crowbar - could be useful for prying open doors");
     inventory.push_back(newItem2);
 
-    Player newPlayer(newRoom, inventory);
+    Player newPlayer(newRoom, items);
 
 
 
