@@ -11,6 +11,10 @@ class Enemy {
 public:
     Enemy(string name, string description, int aggression, Room initialRoom, Item killedBy);
 
+    string getName();
+
+    string getDescription();
+
 private:
     int id;
     string name;

@@ -10,6 +10,9 @@ public:
     Item(string name, string description);
 
     string getName();
+
+    string getDescription();
+
 private:
     int id;
     string name;

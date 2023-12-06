@@ -7,6 +7,24 @@ string Room::getDescription() {
     return description;
 }
 
+string Room::getExits() {
+    if (exits.empty()) {
+        return "There are no exits.";
+    } else {
+        string response = "There are exits to the ";
+        size_t count = 0;
+        for (const auto& pair : exits) {
+            response += pair.first;
+            if (++count < exits.size() - 1) {
+                response += ", ";
+            } else if (count == exits.size() - 1) {
+                response += " and ";
+            }
+        }
+        return response;
+    }
+}
+
 string Room::look() {
     if (items.empty()) {
         return "You find nothing";
@@ -28,3 +46,13 @@ string Room::look() {
 }
 
 
+string Room::lookDirection(string direction) {
+    auto it = exits.find(direction);
+    if (it != exits.end()) {
+        // Found an exit in the given direction
+        return it->second;
+    } else {
+        // No exit in the given direction
+        return "There is no exit in the " + direction + " direction.";
+    }
+}

@@ -3,6 +3,8 @@
 
 Player::Player(Room initialRoom, vector<Item> initialInventory) : id(GameBuilder::getInstance().generateUnqiueId()), currentRoom(initialRoom), inventory(initialInventory){}
 
+//TODO: Display room
+
 string Player::searchInventory() {
     if (inventory.empty()) {
         return "Your inventory is empty";

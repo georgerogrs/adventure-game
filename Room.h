@@ -15,7 +15,11 @@ public:
 
     string getDescription();
 
+    string getExits();
+
     string look();
+
+    string lookDirection(string direction);
 private:
     int id;
     string description;

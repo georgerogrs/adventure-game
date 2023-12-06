@@ -1,18 +1,10 @@
 # ninja log v5
-2498	2739	1701827734032861516	adventure_game	49bfd7bd206c16e0
-6614	7603	1701824814772624358	CMakeFiles/adventure_game.dir/GameBuilder.cpp.o	7407461880e355cc
-4221	6514	1701825943692486642	CMakeFiles/adventure_game.dir/Enemy.cpp.o	b34fec3793c86c3a
-16	1827	1701827588550813918	CMakeFiles/adventure_game.dir/main.cpp.o	5fbae050ab655394
-3955	6169	1701825683182230085	CMakeFiles/adventure_game.dir/Item.cpp.o	7e017dd541671907
-4712	6758	1701824813923066824	CMakeFiles/adventure_game.dir/Objective.cpp.o	58b38913b20879da
-16	2498	1701827733780296548	CMakeFiles/adventure_game.dir/Player.cpp.o	6f0fffcc1ffa63dc
-16	3204	1701826650792040094	CMakeFiles/adventure_game.dir/Room.cpp.o	6c9dc29b690ae0ec
-0	236	1701828552525792978	build.ninja	1605dbbee008b9ca
-34	2994	1701828555523450990	CMakeFiles/adventure_game.dir/Player.cpp.o	db2073490787c0f6
-34	2998	1701828555523450916	CMakeFiles/adventure_game.dir/Room.cpp.o	e1ecba939d7ff0a3
-33	3278	1701828555816546062	CMakeFiles/adventure_game.dir/main.cpp.o	64fa1d6078628d83
-2994	4696	1701828557232387480	CMakeFiles/adventure_game.dir/Item.cpp.o	612fbc792575c788
-3278	4997	1701828557534277358	CMakeFiles/adventure_game.dir/Objective.cpp.o	324e06363b6cf40d
-2999	5054	1701828557594515142	CMakeFiles/adventure_game.dir/Enemy.cpp.o	549b503f492a59b5
+3398	3582	1701830707692080536	adventure_game	49bfd7bd206c16e0
 4696	5799	1701828558345835834	CMakeFiles/adventure_game.dir/GameBuilder.cpp.o	aee50a2c581475b2
-5800	5935	1701828558487861001	adventure_game	49bfd7bd206c16e0
+4372	6542	1701830643230958372	CMakeFiles/adventure_game.dir/Enemy.cpp.o	549b503f492a59b5
+37	1956	1701830687408473792	CMakeFiles/adventure_game.dir/main.cpp.o	64fa1d6078628d83
+2682	3745	1701829401079528897	CMakeFiles/adventure_game.dir/Item.cpp.o	612fbc792575c788
+23	4372	1701830641061644148	CMakeFiles/adventure_game.dir/Player.cpp.o	db2073490787c0f6
+3278	4997	1701828557534277358	CMakeFiles/adventure_game.dir/Objective.cpp.o	324e06363b6cf40d
+18	3398	1701830707490467762	CMakeFiles/adventure_game.dir/Room.cpp.o	e1ecba939d7ff0a3
+0	236	1701897177276307245	build.ninja	1605dbbee008b9ca
