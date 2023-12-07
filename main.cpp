@@ -1,6 +1,13 @@
+#include <nlohmann/json.hpp>
+#include <fstream>
 #include <iostream>
+#include <sstream>
+#include <string>
 #include "Room.h"
 #include "Player.h"
+
+
+using json = nlohmann::json;
 
 using namespace std;
 
@@ -13,8 +20,57 @@ void trim(string &s) {
         s.erase(p+1);
 }
 
+Room* buildMap(string level) {
+    std::ifstream file(level);
+    if (!file.is_open()) {
+        std::cerr << "Error opening map file" << std::endl;
+    }
+
+    std::stringstream buffer;
+    buffer << file.rdbuf();
+    std::string fileContent = buffer.str();
+
+    json mapJson = json::parse(fileContent);
+    map<string, Room*> roomMap;
+
+    // First loop: Create all rooms without exits
+    for (const auto& room : mapJson["rooms"]) {
+        string roomId = room["id"];
+        string roomDesc = room["desc"];
+        roomMap[roomId] = new Room(roomId, roomDesc, map<string, Room*>());
+    }
+
+    // Second loop: Set exits for each room
+    for (const auto& room : mapJson["rooms"]) {
+        string roomId = room["id"];
+        auto& currentRoom = roomMap[roomId];
+
+        for (const auto& exit : room["exits"].items()) {
+            string exitDirection = exit.key();
+            string exitToRoomId = exit.value();
+
+            if (roomMap.find(exitToRoomId) != roomMap.end()) {
+                currentRoom->addExit(make_pair(exitDirection, roomMap[exitToRoomId]));
+            }
+        }
+    }
+
+    string initialRoomId = mapJson["player"]["initialroom"];
+    Room* initialRoom = nullptr;
+
+    if (roomMap.find(initialRoomId) != roomMap.end()) {
+        initialRoom = roomMap[initialRoomId];
+    } else {
+        cerr << "Initial room not found in map data." << endl;
+    }
+
+    return initialRoom;
+}
+
 
 int main() {
+
+    Room* initialRoom = buildMap("resources/map4.json");
 
     //Map Building
     map<string, Room*> exits1;
@@ -24,7 +80,7 @@ int main() {
     exits2["north"] = &room1;
     Room room2("room2", "A vast open forest lies before you", exits2);
 
-    Player player(&room2);
+    Player player(initialRoom);
 
     bool endgame = true;
 

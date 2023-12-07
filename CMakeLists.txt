@@ -11,3 +11,5 @@ add_executable(adventure_game main.cpp
         Object.h
         Object.cpp
 )
+
+include_directories(include)

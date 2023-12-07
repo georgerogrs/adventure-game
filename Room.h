@@ -10,12 +10,15 @@
 
 class Room {
 public:
+    Room();
+
     Room(std::string name, std::string description, std::map<std::string, Room*> exits);
 
     std::string getName();
     std::string getDescription();
 
     std::map<std::string, Room*> getExits();
+    void addExit(std::pair<std::string, Room*> exit);
 
     std::string displayExits();
 private:

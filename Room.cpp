@@ -8,6 +8,12 @@
 
 using namespace std;
 
+Room::Room() {
+    this->name = "";
+    this->description = "";
+    this->exits = map<string, Room*>();
+}
+
 Room::Room(std::string name, std::string description, std::map<std::string, Room*> exits) {
     this->name = name;
     this->description = description;
@@ -24,6 +30,10 @@ string Room::getDescription() {
 
 map<string, Room*> Room::getExits() {
     return exits;
+}
+
+void Room::addExit(pair<string, Room*> exit) {
+    exits.insert(exit);
 }
 
 string Room::displayExits() {

@@ -52,24 +52,28 @@ build cmake_object_order_depends_target_adventure_game: phony || CMakeFiles/adve
 build CMakeFiles/adventure_game.dir/main.cpp.o: CXX_COMPILER__adventure_game_unscanned_Debug /Users/georgerogers/Desktop/adventure-game/main.cpp || cmake_object_order_depends_target_adventure_game
   DEP_FILE = CMakeFiles/adventure_game.dir/main.cpp.o.d
   FLAGS = -g -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk -fcolor-diagnostics
+  INCLUDES = -I/Users/georgerogers/Desktop/adventure-game/include
   OBJECT_DIR = CMakeFiles/adventure_game.dir
   OBJECT_FILE_DIR = CMakeFiles/adventure_game.dir
 
 build CMakeFiles/adventure_game.dir/Player.cpp.o: CXX_COMPILER__adventure_game_unscanned_Debug /Users/georgerogers/Desktop/adventure-game/Player.cpp || cmake_object_order_depends_target_adventure_game
   DEP_FILE = CMakeFiles/adventure_game.dir/Player.cpp.o.d
   FLAGS = -g -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk -fcolor-diagnostics
+  INCLUDES = -I/Users/georgerogers/Desktop/adventure-game/include
   OBJECT_DIR = CMakeFiles/adventure_game.dir
   OBJECT_FILE_DIR = CMakeFiles/adventure_game.dir
 
 build CMakeFiles/adventure_game.dir/Room.cpp.o: CXX_COMPILER__adventure_game_unscanned_Debug /Users/georgerogers/Desktop/adventure-game/Room.cpp || cmake_object_order_depends_target_adventure_game
   DEP_FILE = CMakeFiles/adventure_game.dir/Room.cpp.o.d
   FLAGS = -g -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk -fcolor-diagnostics
+  INCLUDES = -I/Users/georgerogers/Desktop/adventure-game/include
   OBJECT_DIR = CMakeFiles/adventure_game.dir
   OBJECT_FILE_DIR = CMakeFiles/adventure_game.dir
 
 build CMakeFiles/adventure_game.dir/Object.cpp.o: CXX_COMPILER__adventure_game_unscanned_Debug /Users/georgerogers/Desktop/adventure-game/Object.cpp || cmake_object_order_depends_target_adventure_game
   DEP_FILE = CMakeFiles/adventure_game.dir/Object.cpp.o.d
   FLAGS = -g -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk -fcolor-diagnostics
+  INCLUDES = -I/Users/georgerogers/Desktop/adventure-game/include
   OBJECT_DIR = CMakeFiles/adventure_game.dir
   OBJECT_FILE_DIR = CMakeFiles/adventure_game.dir
 
