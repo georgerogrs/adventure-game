@@ -13,6 +13,7 @@ Room::Room() {
     this->description = "";
     this->exits = map<string, Room*>();
     this->objects = {};
+    this->enemies = {};
 }
 
 Room::Room(std::string name, std::string description, std::map<std::string, Room*> exits) {
@@ -20,6 +21,7 @@ Room::Room(std::string name, std::string description, std::map<std::string, Room
     this->description = description;
     this->exits = exits;
     this->objects = {};
+    this->enemies = {};
 }
 
 string Room::getName() {
@@ -48,6 +50,25 @@ string Room::getDescription() {
         }
     }
 
+    if (enemies.size() > 0) {
+        response +=  " There is a ";
+
+        int count = 0;
+        for (auto enemy : enemies) {
+            count++;
+            response += enemy->getName();
+
+            // If second last exit, add "and"
+            if (count == enemies.size() - 1 && enemies.size() > 1) {
+                response += " and a ";
+            }
+                // If not the last exit, add ", "
+            else if (count != enemies.size()) {
+                response += ", ";
+            }
+        }
+    }
+
     return response;
 }
 
@@ -60,11 +81,19 @@ void Room::addExit(pair<string, Room*> exit) {
 }
 
 std::vector<Object*>& Room::getObjects() {
-    return this->objects; // Assuming `objects` is the member variable holding the objects
+    return this->objects;
 }
 
 void Room::addObject(Object* object) {
     objects.push_back(object);
+}
+
+std::vector<Enemy*>& Room::getEnemies() {
+    return this->enemies;
+}
+
+void Room::addEnemy(Enemy *enemy) {
+    enemies.push_back(enemy);
 }
 
 string Room::displayExits() {

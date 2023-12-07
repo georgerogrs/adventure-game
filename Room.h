@@ -9,6 +9,7 @@
 #include <map>
 
 #include "Object.h"
+#include "Enemy.h"
 
 class Room {
 public:
@@ -25,6 +26,9 @@ public:
     std::vector<Object*>& getObjects();
     void addObject(Object* object);
 
+    std::vector<Enemy*>& getEnemies();
+    void addEnemy(Enemy* enemy);
+
     std::string displayExits();
 
 private:
@@ -34,6 +38,8 @@ private:
     std::map<std::string, Room*> exits;
 
     std::vector<Object*> objects;
+
+    std::vector<Enemy*> enemies;
 };
 
 

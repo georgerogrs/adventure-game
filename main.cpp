@@ -78,6 +78,27 @@ int main() {
         objectCount++;
     }
 
+    map<int, Enemy*> allEnemies;
+    int enemyCount = 0;
+    //Create Enemies
+    for (const auto& enemy : mapJson["enemies"]) {
+        string enemyName = enemy["id"];
+        string enemyDesc = enemy["desc"];
+        int enemyAgg = enemy["aggressiveness"];
+
+
+        vector<string> enemyKilledBy = enemy["killedby"];
+
+        for (auto pair : roomMap) {
+            if (pair.second->getName() == enemy["initialroom"]) {
+                //Sets enemy to room
+                pair.second->addEnemy(new Enemy(enemyName, enemyDesc, enemyAgg, enemyKilledBy));
+            }
+        }
+
+        enemyCount++;
+    }
+
     //Create Player's starting point
     string initialRoomId = mapJson["player"]["initialroom"];
     Room* initialRoom = nullptr;

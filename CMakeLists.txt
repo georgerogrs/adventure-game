@@ -10,6 +10,8 @@ add_executable(adventure_game main.cpp
         Room.h
         Object.h
         Object.cpp
+        Enemy.cpp
+        Enemy.h
 )
 
 include_directories(include)

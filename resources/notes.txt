@@ -11,7 +11,11 @@ Room initialRoom
 - Disappears from room when player takes
 
 Enemy
-//Save for later
+string Name
+string Description
+int Aggression
+string killedBy
+bool isAlive
 
 
 Player
