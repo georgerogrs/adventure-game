@@ -16,7 +16,15 @@
     "id":"gun",
     "desc":"It looks like you can use it to shoot and kill things.",
     "initialroom":"room1"
-  }
+  }, {
+      "id":"spanner",
+      "desc":"A useless rusty spanner.",
+      "initialroom":"room1"
+    },  {
+      "id":"wrench",
+      "desc":"A useless rusty wrench.",
+      "initialroom":"room1"
+    }
   ],
   "enemies":[
   {

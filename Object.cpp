@@ -6,10 +6,9 @@
 
 using namespace std;
 
-Object::Object(string name, string description, Room* initialRoom) {
+Object::Object(string name, string description) {
     this->name = name;
     this->description = description;
-    this->initialRoom = initialRoom;
 }
 
 string Object::getName() {
@@ -18,9 +17,5 @@ string Object::getName() {
 
 string Object::getDescription() {
     return description;
-}
-
-Room Object::getRoom() {
-    return *initialRoom;
 }
 

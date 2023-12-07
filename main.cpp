@@ -1,9 +1,12 @@
-#include <nlohmann/json.hpp>
 #include <fstream>
 #include <iostream>
 #include <sstream>
 #include <string>
+
+#include <nlohmann/json.hpp>
+
 #include "Room.h"
+#include "Object.h"
 #include "Player.h"
 
 
@@ -20,8 +23,9 @@ void trim(string &s) {
         s.erase(p+1);
 }
 
-Room* buildMap(string level) {
-    std::ifstream file(level);
+int main() {
+
+    std::ifstream file("resources/map1.json");
     if (!file.is_open()) {
         std::cerr << "Error opening map file" << std::endl;
     }
@@ -33,14 +37,14 @@ Room* buildMap(string level) {
     json mapJson = json::parse(fileContent);
     map<string, Room*> roomMap;
 
-    // First loop: Create all rooms without exits
+    // Create all rooms without exits initially
     for (const auto& room : mapJson["rooms"]) {
         string roomId = room["id"];
         string roomDesc = room["desc"];
         roomMap[roomId] = new Room(roomId, roomDesc, map<string, Room*>());
     }
 
-    // Second loop: Set exits for each room
+    // Set exits for each room
     for (const auto& room : mapJson["rooms"]) {
         string roomId = room["id"];
         auto& currentRoom = roomMap[roomId];
@@ -55,6 +59,26 @@ Room* buildMap(string level) {
         }
     }
 
+    map<int, Object*> allObjects;
+    int objectCount = 0;
+
+    //Create Objects
+    for (const auto& object : mapJson["objects"]) {
+        string objectName = object["id"];
+        string objectDesc = object["desc"];
+
+        for (auto pair : roomMap) {
+            if (pair.second->getName() == object["initialroom"]) {
+
+                //Sets object to room
+                pair.second->addObject(new Object(objectName, objectDesc));
+            }
+        }
+
+        objectCount++;
+    }
+
+    //Create Player's starting point
     string initialRoomId = mapJson["player"]["initialroom"];
     Room* initialRoom = nullptr;
 
@@ -64,36 +88,31 @@ Room* buildMap(string level) {
         cerr << "Initial room not found in map data." << endl;
     }
 
-    return initialRoom;
-}
-
-
-int main() {
-
-    Room* initialRoom = buildMap("resources/map4.json");
-
-    //Map Building
-    map<string, Room*> exits1;
-    Room room1("room1", "You fall into a dingy hole", exits1);
-
-    map<string, Room*> exits2;
-    exits2["north"] = &room1;
-    Room room2("room2", "A vast open forest lies before you", exits2);
 
     Player player(initialRoom);
 
     bool endgame = true;
 
 
-    cout << player.getRoom().getDescription() << endl;
+    cout << player.getRoom().getDescription()<< endl;
 
+
+    //Game starts
     while (endgame) {
         string userInput;
 
         getline(cin, userInput);
 
+        if (userInput == "look") {
+            cout << player.getRoom().getDescription() << endl;
+        }
+
         if (userInput == "show exits") {
             cout << player.getRoom().displayExits() << endl;
+        }
+
+        if (userInput == "list items") {
+            cout << player.displayInventory() << endl;
         }
 
         //Checks if user has typed "go"
@@ -102,6 +121,17 @@ int main() {
             //Removes all whitespace
             trim(direction);
             cout << player.move(direction) << endl;
+        }
+
+        if (userInput.substr(0, 4) == "take") {
+            string item = userInput.substr(4);
+            //Removes all whitespace
+            trim(item);
+            cout << player.take(item) << endl;
+
+            for (auto it : player.getRoom().getObjects()) {
+                cout << it->getName() << endl;
+            }
         }
 
         if (userInput == "quit game") {

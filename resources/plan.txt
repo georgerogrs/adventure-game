@@ -35,3 +35,9 @@ string what
 GAME
  - Continuous while loop asking for user input
  - If user types certain command complete certain action
+
+ Display Objects:
+ Object has given room <-> Room does not have object
+
+ - Search through all objects in game (need db)
+ - If object room matches this room -> Display object name also

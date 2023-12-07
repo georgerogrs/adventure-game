@@ -12,12 +12,14 @@ Room::Room() {
     this->name = "";
     this->description = "";
     this->exits = map<string, Room*>();
+    this->objects = {};
 }
 
 Room::Room(std::string name, std::string description, std::map<std::string, Room*> exits) {
     this->name = name;
     this->description = description;
     this->exits = exits;
+    this->objects = {};
 }
 
 string Room::getName() {
@@ -25,7 +27,28 @@ string Room::getName() {
 }
 
 string Room::getDescription() {
-    return description;
+    string response = description;
+
+    if (objects.size() > 0) {
+        response +=  " There is a ";
+
+        int count = 0;
+        for (auto object : objects) {
+            count++;
+            response += object->getName();
+
+            // If second last exit, add "and"
+            if (count == objects.size() - 1 && objects.size() > 1) {
+                response += " and a ";
+            }
+                // If not the last exit, add ", "
+            else if (count != objects.size()) {
+                response += ", ";
+            }
+        }
+    }
+
+    return response;
 }
 
 map<string, Room*> Room::getExits() {
@@ -34,6 +57,14 @@ map<string, Room*> Room::getExits() {
 
 void Room::addExit(pair<string, Room*> exit) {
     exits.insert(exit);
+}
+
+std::vector<Object*>& Room::getObjects() {
+    return this->objects; // Assuming `objects` is the member variable holding the objects
+}
+
+void Room::addObject(Object* object) {
+    objects.push_back(object);
 }
 
 string Room::displayExits() {

@@ -6,21 +6,16 @@
 #define ADVENTURE_GAME_RETRY_OBJECT_H
 
 #include <string>
-#include "Room.h"
 
 class Object {
 public:
-    Object(std::string name, std::string description, Room* initialRoom);
+    Object(std::string name, std::string description);
 
     std::string getName();
     std::string getDescription();
-
-    Room getRoom();
 private:
     std::string name;
     std::string description;
-
-    Room* initialRoom;
 };
 
 

@@ -8,6 +8,8 @@
 #include <string>
 #include <map>
 
+#include "Object.h"
+
 class Room {
 public:
     Room();
@@ -20,12 +22,18 @@ public:
     std::map<std::string, Room*> getExits();
     void addExit(std::pair<std::string, Room*> exit);
 
+    std::vector<Object*>& getObjects();
+    void addObject(Object* object);
+
     std::string displayExits();
+
 private:
     std::string name;
     std::string description;
 
     std::map<std::string, Room*> exits;
+
+    std::vector<Object*> objects;
 };
 
 
