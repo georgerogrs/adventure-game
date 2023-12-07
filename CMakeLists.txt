@@ -3,7 +3,7 @@ project(adventure-game)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(adventure_game main.cpp
+add_executable(adventure_game GameEngine.cpp
         Player.cpp
         Player.h
         Room.cpp

@@ -78,6 +78,7 @@ int main() {
         objectCount++;
     }
 
+    //Create enemies
     map<int, Enemy*> allEnemies;
     int enemyCount = 0;
     //Create Enemies
@@ -149,16 +150,42 @@ int main() {
             //Removes all whitespace
             trim(item);
             cout << player.take(item) << endl;
+        }
 
-            for (auto it : player.getRoom().getObjects()) {
-                cout << it->getName() << endl;
+        if (userInput.substr(0, 4) == "kill") {
+            string killWith = userInput.substr(4);
+            trim(killWith);
+
+            // Check contains the phrase "with"
+            size_t withPosition = killWith.find(" with ");
+            if (withPosition != string::npos) {
+                string enemyName = killWith.substr(0, withPosition);
+                string weaponName = killWith.substr(withPosition + 6);
+                trim(enemyName);
+                trim(weaponName);
+
+                if (player.kill(enemyName, weaponName) == "ENDGAME") {
+                    cout << "The weapon "+weaponName+" has no affect on "+enemyName+"." << endl;
+                    cout << "The "+enemyName+" attacks you and you die.";
+                    endgame = false;
+                } else if (player.kill(enemyName, weaponName) == "WIN") {
+                    //Finds matching enemy and removes it
+                    for (auto enemy : player.getRoom().getEnemies()) {
+                        if (enemy->getName() == enemyName) {
+                            player.getRoom().removeEnemy(enemy);
+                            cout << enemyName+" killed." << endl;
+                        }
+                    }
+                } else {
+                    cout << player.kill(enemyName, weaponName) << endl;
+                }
             }
         }
 
         if (userInput == "quit game") {
-            cout << "GAME OVER";
             endgame = false;
         }
     }
+    cout << "GAME OVER";
     return 0;
 }

@@ -48,6 +48,8 @@ string Room::getDescription() {
                 response += ", ";
             }
         }
+
+        response+=".";
     }
 
     if (enemies.size() > 0) {
@@ -67,6 +69,7 @@ string Room::getDescription() {
                 response += ", ";
             }
         }
+        response+=".";
     }
 
     return response;
@@ -94,6 +97,11 @@ std::vector<Enemy*>& Room::getEnemies() {
 
 void Room::addEnemy(Enemy *enemy) {
     enemies.push_back(enemy);
+}
+
+void Room::removeEnemy(Enemy *enemy) {
+    auto newEnd = std::remove(enemies.begin(), enemies.end(), enemy);
+    enemies.erase(newEnd, enemies.end());
 }
 
 string Room::displayExits() {

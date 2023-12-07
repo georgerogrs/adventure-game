@@ -33,7 +33,13 @@
     "aggressiveness":50,
     "initialroom":"room2",
     "killedby":["gun"]
-  }
+  },{
+      "id":"ogre",
+      "desc":"The ogre looks like it wants to attack you.",
+      "aggressiveness":20,
+      "initialroom":"room2",
+      "killedby":["spanner"]
+    }
   ],
   "player":{
     "initialroom":"room1"

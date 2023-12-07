@@ -49,8 +49,8 @@ cmake_ninja_workdir = /Users/georgerogers/Desktop/adventure-game/cmake-build-deb
 
 build cmake_object_order_depends_target_adventure_game: phony || CMakeFiles/adventure_game.dir
 
-build CMakeFiles/adventure_game.dir/main.cpp.o: CXX_COMPILER__adventure_game_unscanned_Debug /Users/georgerogers/Desktop/adventure-game/main.cpp || cmake_object_order_depends_target_adventure_game
-  DEP_FILE = CMakeFiles/adventure_game.dir/main.cpp.o.d
+build CMakeFiles/adventure_game.dir/GameEngine.cpp.o: CXX_COMPILER__adventure_game_unscanned_Debug /Users/georgerogers/Desktop/adventure-game/GameEngine.cpp || cmake_object_order_depends_target_adventure_game
+  DEP_FILE = CMakeFiles/adventure_game.dir/GameEngine.cpp.o.d
   FLAGS = -g -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk -fcolor-diagnostics
   INCLUDES = -I/Users/georgerogers/Desktop/adventure-game/include
   OBJECT_DIR = CMakeFiles/adventure_game.dir
@@ -92,7 +92,7 @@ build CMakeFiles/adventure_game.dir/Enemy.cpp.o: CXX_COMPILER__adventure_game_un
 #############################################
 # Link the executable adventure_game
 
-build adventure_game: CXX_EXECUTABLE_LINKER__adventure_game_Debug CMakeFiles/adventure_game.dir/main.cpp.o CMakeFiles/adventure_game.dir/Player.cpp.o CMakeFiles/adventure_game.dir/Room.cpp.o CMakeFiles/adventure_game.dir/Object.cpp.o CMakeFiles/adventure_game.dir/Enemy.cpp.o
+build adventure_game: CXX_EXECUTABLE_LINKER__adventure_game_Debug CMakeFiles/adventure_game.dir/GameEngine.cpp.o CMakeFiles/adventure_game.dir/Player.cpp.o CMakeFiles/adventure_game.dir/Room.cpp.o CMakeFiles/adventure_game.dir/Object.cpp.o CMakeFiles/adventure_game.dir/Enemy.cpp.o
   FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk
   OBJECT_DIR = CMakeFiles/adventure_game.dir
   POST_BUILD = :

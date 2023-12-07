@@ -28,6 +28,7 @@ public:
 
     std::vector<Enemy*>& getEnemies();
     void addEnemy(Enemy* enemy);
+    void removeEnemy(Enemy* enemy);
 
     std::string displayExits();
 

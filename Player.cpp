@@ -2,17 +2,39 @@
 // Created by George Rogers on 07/12/2023.
 //
 
+#include <algorithm>
+#include <string>
+#include <vector>
+
 #include "Player.h"
 
 using namespace std;
+
+const string GAMEOVER = "ENDGAME";
+
+const string ENEMYKILLED = "WIN";
 
 Player::Player(Room* initialRoom) {
     this->room = initialRoom;
     this->inventory = {};
 }
 
-Room Player::getRoom() {
+Room& Player::getRoom() {
     return *room;
+}
+
+string Player::displayInventory() {
+
+    if (inventory.size() == 0) {
+        return "You have no items in your inventory.";
+    }
+
+    string response = "INVENTORY:\n";
+    for (auto it : inventory) {
+        response += "- "+it->getName()+"\n";
+    }
+
+    return response;
 }
 
 string Player::take(string object) {
@@ -43,16 +65,36 @@ string Player::move(string direction) {
     return "Unable to move in direction "+direction;
 }
 
-string Player::displayInventory() {
+string Player::kill(std::string who, std::string what) {
 
-    if (inventory.size() == 0) {
-        return "You have no items in your inventory.";
+    //Check if enemy in room
+    bool isInRoom = false;
+    Enemy* enemyToKill;
+    for (auto enemy : this->room->getEnemies()) {
+        if (who == enemy->getName()) {
+            enemyToKill = enemy;
+            isInRoom = true;
+            break;
+        }
+    }
+    if (!isInRoom) {return "No enemy "+who+" in room.";}
+
+    //Check if item in inventory
+    bool isInInventory = false;
+    for (auto item : inventory) {
+        if (what == item->getName()) {
+            isInInventory = true;
+            break;
+        }
+    }
+    if (!isInInventory) {return "No object "+what+" in inventory.";}
+
+    //Check if item kills enemy
+    for (auto weapon : enemyToKill->getKilledBy()) {
+        if (weapon == what) {;
+            return ENEMYKILLED;
+        }
     }
 
-    string response = "INVENTORY:\n";
-    for (auto it : inventory) {
-        response += "- "+it->getName()+"\n";
-    }
-
-    return response;
+    return GAMEOVER;
 }
