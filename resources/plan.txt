@@ -1,0 +1,37 @@
+Room
+string Name
+string Description
+List<String> Exits
+
+Object
+string Name
+string Description
+Room initialRoom
+
+- Disappears from room when player takes
+
+Enemy
+//Save for later
+
+
+Player
+Room initialRoom
+
+
+- Navigates through rooms
+- Take Objects in rooms -> Object will disappear from room
+- List items -> shows inventory
+
+Game Objective
+string type = one of -> List<Enemy>, List<Object>, Room
+string what
+
+
+1. Kill an enemy
+2. Collect a set of objects
+3. Arrive at a room
+
+
+GAME
+ - Continuous while loop asking for user input
+ - If user types certain command complete certain action

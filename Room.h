@@ -1,31 +1,29 @@
-#ifndef ADVENTURE_GAME_ROOM_H
-#define ADVENTURE_GAME_ROOM_H
+//
+// Created by George Rogers on 07/12/2023.
+//
 
-#include <vector>
+#ifndef ADVENTURE_GAME_RETRY_ROOM_H
+#define ADVENTURE_GAME_RETRY_ROOM_H
+
 #include <string>
 #include <map>
 
-#include "Item.h"
-
-using namespace std;
-
 class Room {
 public:
-    Room(string description, map<string, string> exits, vector<Item> items);
+    Room(std::string name, std::string description, std::map<std::string, Room*> exits);
 
-    string getDescription();
+    std::string getName();
+    std::string getDescription();
 
-    string getExits();
+    std::map<std::string, Room*> getExits();
 
-    string look();
-
-    string lookDirection(string direction);
+    std::string displayExits();
 private:
-    int id;
-    string description;
-    map<string, string> exits;
-    vector<Item> items;
+    std::string name;
+    std::string description;
+
+    std::map<std::string, Room*> exits;
 };
 
 
-#endif //ADVENTURE_GAME_ROOM_H
+#endif //ADVENTURE_GAME_RETRY_ROOM_H

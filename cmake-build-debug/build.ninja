@@ -67,26 +67,8 @@ build CMakeFiles/adventure_game.dir/Room.cpp.o: CXX_COMPILER__adventure_game_uns
   OBJECT_DIR = CMakeFiles/adventure_game.dir
   OBJECT_FILE_DIR = CMakeFiles/adventure_game.dir
 
-build CMakeFiles/adventure_game.dir/Item.cpp.o: CXX_COMPILER__adventure_game_unscanned_Debug /Users/georgerogers/Desktop/adventure-game/Item.cpp || cmake_object_order_depends_target_adventure_game
-  DEP_FILE = CMakeFiles/adventure_game.dir/Item.cpp.o.d
-  FLAGS = -g -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk -fcolor-diagnostics
-  OBJECT_DIR = CMakeFiles/adventure_game.dir
-  OBJECT_FILE_DIR = CMakeFiles/adventure_game.dir
-
-build CMakeFiles/adventure_game.dir/Enemy.cpp.o: CXX_COMPILER__adventure_game_unscanned_Debug /Users/georgerogers/Desktop/adventure-game/Enemy.cpp || cmake_object_order_depends_target_adventure_game
-  DEP_FILE = CMakeFiles/adventure_game.dir/Enemy.cpp.o.d
-  FLAGS = -g -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk -fcolor-diagnostics
-  OBJECT_DIR = CMakeFiles/adventure_game.dir
-  OBJECT_FILE_DIR = CMakeFiles/adventure_game.dir
-
-build CMakeFiles/adventure_game.dir/Objective.cpp.o: CXX_COMPILER__adventure_game_unscanned_Debug /Users/georgerogers/Desktop/adventure-game/Objective.cpp || cmake_object_order_depends_target_adventure_game
-  DEP_FILE = CMakeFiles/adventure_game.dir/Objective.cpp.o.d
-  FLAGS = -g -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk -fcolor-diagnostics
-  OBJECT_DIR = CMakeFiles/adventure_game.dir
-  OBJECT_FILE_DIR = CMakeFiles/adventure_game.dir
-
-build CMakeFiles/adventure_game.dir/GameBuilder.cpp.o: CXX_COMPILER__adventure_game_unscanned_Debug /Users/georgerogers/Desktop/adventure-game/GameBuilder.cpp || cmake_object_order_depends_target_adventure_game
-  DEP_FILE = CMakeFiles/adventure_game.dir/GameBuilder.cpp.o.d
+build CMakeFiles/adventure_game.dir/Object.cpp.o: CXX_COMPILER__adventure_game_unscanned_Debug /Users/georgerogers/Desktop/adventure-game/Object.cpp || cmake_object_order_depends_target_adventure_game
+  DEP_FILE = CMakeFiles/adventure_game.dir/Object.cpp.o.d
   FLAGS = -g -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk -fcolor-diagnostics
   OBJECT_DIR = CMakeFiles/adventure_game.dir
   OBJECT_FILE_DIR = CMakeFiles/adventure_game.dir
@@ -99,7 +81,7 @@ build CMakeFiles/adventure_game.dir/GameBuilder.cpp.o: CXX_COMPILER__adventure_g
 #############################################
 # Link the executable adventure_game
 
-build adventure_game: CXX_EXECUTABLE_LINKER__adventure_game_Debug CMakeFiles/adventure_game.dir/main.cpp.o CMakeFiles/adventure_game.dir/Player.cpp.o CMakeFiles/adventure_game.dir/Room.cpp.o CMakeFiles/adventure_game.dir/Item.cpp.o CMakeFiles/adventure_game.dir/Enemy.cpp.o CMakeFiles/adventure_game.dir/Objective.cpp.o CMakeFiles/adventure_game.dir/GameBuilder.cpp.o
+build adventure_game: CXX_EXECUTABLE_LINKER__adventure_game_Debug CMakeFiles/adventure_game.dir/main.cpp.o CMakeFiles/adventure_game.dir/Player.cpp.o CMakeFiles/adventure_game.dir/Room.cpp.o CMakeFiles/adventure_game.dir/Object.cpp.o
   FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk
   OBJECT_DIR = CMakeFiles/adventure_game.dir
   POST_BUILD = :

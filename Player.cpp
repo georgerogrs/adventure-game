@@ -1,25 +1,26 @@
+//
+// Created by George Rogers on 07/12/2023.
+//
+
 #include "Player.h"
-#include "GameBuilder.h"
 
-Player::Player(Room initialRoom, vector<Item> initialInventory) : id(GameBuilder::getInstance().generateUnqiueId()), currentRoom(initialRoom), inventory(initialInventory){}
+using namespace std;
 
-//TODO: Display room
-
-string Player::searchInventory() {
-    if (inventory.empty()) {
-        return "Your inventory is empty";
-    } else {
-        string response = "\nINVENTORY\n";
-        for(int i=0;i<inventory.size();i++) {
-            Item givenItem = inventory[i];
-            response += "- "+givenItem.getName();
-            if (i < inventory.size()-1) {
-                response+="\n";
-            }
-        }
-
-        return response;
-    }
+Player::Player(Room* initialRoom) {
+    this->room = initialRoom;
 }
 
-//TODO: function to move rooms
+Room Player::getRoom() {
+    return *room;
+}
+
+string Player::move(string direction) {
+    for (auto exit : room->getExits()) {
+        if (exit.first == direction) {
+            room = exit.second;
+            return room->getDescription();
+        }
+    }
+
+    return "Unable to move in direction "+direction;
+}

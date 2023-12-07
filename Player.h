@@ -1,24 +1,24 @@
-#ifndef ADVENTURE_GAME_PLAYER_H
-#define ADVENTURE_GAME_PLAYER_H
+//
+// Created by George Rogers on 07/12/2023.
+//
 
-#include <vector>
+#ifndef ADVENTURE_GAME_RETRY_PLAYER_H
+#define ADVENTURE_GAME_RETRY_PLAYER_H
+
 
 #include "Room.h"
-#include "Item.h"
-
-using namespace std;
 
 class Player {
 public:
-    Player(Room initialRoom, vector<Item> initialInventory);
+    Player(Room* initialRoom);
 
-    string searchInventory();
+    Room getRoom();
+
+    std::string move(std::string direction);
 
 private:
-    int id;
-    Room currentRoom;
-    vector<Item> inventory;
+    Room* room;
 };
 
 
-#endif //ADVENTURE_GAME_PLAYER_H
+#endif //ADVENTURE_GAME_RETRY_PLAYER_H

@@ -1,10 +1,12 @@
 # ninja log v5
-3398	3582	1701830707692080536	adventure_game	49bfd7bd206c16e0
+3681	3857	1701908069107221811	adventure_game	3e509b5f22dbc451
 4696	5799	1701828558345835834	CMakeFiles/adventure_game.dir/GameBuilder.cpp.o	aee50a2c581475b2
-4372	6542	1701830643230958372	CMakeFiles/adventure_game.dir/Enemy.cpp.o	549b503f492a59b5
-37	1956	1701830687408473792	CMakeFiles/adventure_game.dir/main.cpp.o	64fa1d6078628d83
-2682	3745	1701829401079528897	CMakeFiles/adventure_game.dir/Item.cpp.o	612fbc792575c788
-23	4372	1701830641061644148	CMakeFiles/adventure_game.dir/Player.cpp.o	db2073490787c0f6
+107	15162	1701917692870622631	CMakeFiles/adventure_game.dir/Player.cpp.o	db2073490787c0f6
 3278	4997	1701828557534277358	CMakeFiles/adventure_game.dir/Objective.cpp.o	324e06363b6cf40d
-18	3398	1701830707490467762	CMakeFiles/adventure_game.dir/Room.cpp.o	e1ecba939d7ff0a3
-0	236	1701897177276307245	build.ninja	1605dbbee008b9ca
+101	18414	1701917696329993872	CMakeFiles/adventure_game.dir/main.cpp.o	64fa1d6078628d83
+7350	8404	1701900008714292104	CMakeFiles/adventure_game.dir/Item.cpp.o	612fbc792575c788
+109	15408	1701917693438804777	CMakeFiles/adventure_game.dir/Room.cpp.o	e1ecba939d7ff0a3
+0	236	1701917835199924231	build.ninja	1605dbbee008b9ca
+24	5214	1701909191638157766	CMakeFiles/adventure_game.dir/Exit.cpp.o	bbb63169d7772c12
+21	12580	1701917858026517961	CMakeFiles/adventure_game.dir/Object.cpp.o	41a15ca2278261ac
+12581	15169	1701917860641183003	adventure_game	84e39a2bf64d8822

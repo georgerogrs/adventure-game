@@ -1,40 +1,57 @@
 #include <iostream>
 #include "Room.h"
-#include "Item.h"
 #include "Player.h"
+
+using namespace std;
+
+void trim(string &s) {
+    size_t p = s.find_first_not_of(" \t");
+    s.erase(0, p);
+
+    p = s.find_last_not_of(" \t");
+    if (string::npos != p)
+        s.erase(p+1);
+}
+
 
 int main() {
 
-    //Room setup
-    map<string, string> exits;
-    exits["north"] = "You see a forest";
-    exits["east"] = "There is a small lake";
-    exits["west"] = "There is a huge window showing a vast mountain in the distance";
+    //Map Building
+    map<string, Room*> exits1;
+    Room room1("room1", "You fall into a dingy hole", exits1);
 
-    //Items setup
-    vector<Item> items;
-    Item newItem("shovel", "A rusty shovel with a broken handle");
-    items.push_back(newItem);
-    Item newItem1("knife", "A sharp knife with a jagged edge");
-    items.push_back(newItem1);
+    map<string, Room*> exits2;
+    exits2["north"] = &room1;
+    Room room2("room2", "A vast open forest lies before you", exits2);
 
+    Player player(&room2);
 
-    Room newRoom("A small room with wooden walls", exits, items);
-
-    //Player Setup
-    vector<Item> inventory;
-    Item newItem2("crowbar", "A crowbar - could be useful for prying open doors");
-    inventory.push_back(newItem2);
-
-    Player newPlayer(newRoom, inventory);
+    bool endgame = true;
 
 
+    cout << player.getRoom().getDescription() << endl;
 
-    cout << newRoom.getDescription() << endl;
-    cout << newRoom.look() << endl;
-    cout << newRoom.getExits() << endl;
-    cout << newRoom.lookDirection("north") << endl;
-    cout << newPlayer.searchInventory() << endl;
+    while (endgame) {
+        string userInput;
 
+        getline(cin, userInput);
+
+        if (userInput == "show exits") {
+            cout << player.getRoom().displayExits() << endl;
+        }
+
+        //Checks if user has typed "go"
+        if (userInput.substr(0, 2) == "go") {
+            string direction = userInput.substr(2);
+            //Removes all whitespace
+            trim(direction);
+            cout << player.move(direction) << endl;
+        }
+
+        if (userInput == "quit game") {
+            cout << "GAME OVER";
+            endgame = false;
+        }
+    }
     return 0;
 }
