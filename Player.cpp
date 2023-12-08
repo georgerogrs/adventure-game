@@ -19,10 +19,24 @@ std::mt19937 rng(time(NULL));
 Player::Player(Room* initialRoom) {
     this->room = initialRoom;
     this->inventory = {};
+    this->lives = 3;
+    this->carryCapacity = 3;
 }
 
 Room& Player::getRoom() {
     return *room;
+}
+
+vector<Object*> Player:: getInventory() {
+    return inventory;
+}
+
+int Player::getLives() {
+    return lives;
+}
+
+void Player::loseLife() {
+    lives--;
 }
 
 string Player::displayInventory() {
@@ -31,7 +45,7 @@ string Player::displayInventory() {
         return "You have no items in your inventory.";
     }
 
-    string response = "INVENTORY:\n";
+    string response = "Inventory:\n";
     for (auto it : inventory) {
         response += "- "+it->getName()+"\n";
     }
@@ -39,7 +53,21 @@ string Player::displayInventory() {
     return response;
 }
 
+string Player::displayLives() {
+    string myLives = "";
+    for (int i=0; i<lives;i++) {
+        myLives+= "<3 ";
+    }
+
+    return myLives;
+}
+
 string Player::take(string object) {
+
+    if (inventory.size() == carryCapacity) {
+        return "Inventory at full capacity.";
+    }
+
     // Access the room's objects directly to modify
     auto& objectsInRoom = room->getObjects();
 
@@ -48,7 +76,7 @@ string Player::take(string object) {
             // Remove object from room
             inventory.push_back(*it);
             objectsInRoom.erase(it);
-            return "You picked up a" +  object;
+            return "You picked up the " +  object;
         }
     }
 
@@ -84,6 +112,10 @@ string Player::kill(std::string who, std::string what) {
 
     //Check if item in inventory
     bool isInInventory = false;
+    if (what == "nothing") {
+        isInInventory = true;
+    }
+
     for (auto item : inventory) {
         if (what == item->getName()) {
             isInInventory = true;
@@ -93,6 +125,10 @@ string Player::kill(std::string who, std::string what) {
     if (!isInInventory) {return "No object "+what+" in inventory.";}
 
     //Check if item kills enemy
+    if (what == "nothing" && enemyToKill->getKilledBy().empty()) {
+        return ENEMYKILLED;
+    }
+
     for (auto weapon : enemyToKill->getKilledBy()) {
         if (weapon == what) {;
             return ENEMYKILLED;
@@ -102,15 +138,40 @@ string Player::kill(std::string who, std::string what) {
     return GAMEOVER;
 }
 
-bool Player::hurt(int attack) {
+string Player::drop(std::string object, Room* room) {
+
+    // Check if the item is in inventory
+    bool itemInInv = false;
+    Object* objectToDrop;
+    auto it = inventory.begin();
+    while (it != inventory.end()) {
+        if (object == (*it)->getName()) {
+            itemInInv = true;
+            objectToDrop = *it;
+
+            // Remove item from inventory
+            it = inventory.erase(it);
+            break;
+        } else {
+            ++it;
+        }
+    }
+
+    if (!itemInInv) { return "No item " + object + " in inventory."; }
+
+    // Drop item in room
+    room->getObjects().push_back(objectToDrop);
+
+    return "Item " + object + " dropped.";
+}
+
+void Player::hurt(int attack) {
     uniform_int_distribution<int> dist(1, 100);
     int chance = dist(rng);
 
 //    cout << attack << " : " << chance << endl;
 
     if (chance < attack) {
-        return false;
-    } else {
-        return true;
+        lives--;
     }
 }

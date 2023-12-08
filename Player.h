@@ -15,7 +15,13 @@ public:
 
     Room& getRoom();
 
+    std::vector<Object*> getInventory();
+
+    int getLives();
+
     std::string displayInventory();
+
+    std::string displayLives();
 
     std::string take(std::string object);
 
@@ -23,10 +29,17 @@ public:
 
     std::string kill(std::string who, std::string what);
 
-    bool hurt(int attack);
+    std:: string drop(std::string object, Room* room);
+
+    void hurt(int attack);
+
+    void loseLife();
+
 private:
     Room* room;
     std::vector<Object*> inventory;
+    int lives;
+    int carryCapacity;
 };
 
 

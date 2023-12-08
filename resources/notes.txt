@@ -49,3 +49,16 @@ GAME
 
  - Search through all objects in game (need db)
  - If object room matches this room -> Display object name also
+
+ List of Commands:
+ - look/look around: Displays description of room
+ - look at (item/enemy): Displays description of item/enemy
+ - go (direction): Travels in that direction
+ - take (item): Takes item from room
+ - drop (item): Drops item in room
+ - list items: Displays items in inventory
+ - kill (enemy): Kills enemy (no item required)
+ - kill (enemy) with (item): Kills enemy with item
+ - show lives: Displays total hearts remaining
+ - hint tasks: Shows all remaining tasks ** Removes 1 life **
+ - hint exits: Shows all possible exits ** Removes 1 life **

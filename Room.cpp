@@ -110,27 +110,13 @@ string Room::displayExits() {
         return "There are no exits";
     }
 
-    string response = "There is ";
-    // Only one exit from the room
-    if (exits.size() == 1) {
-        response += "an exit to the ";
-    } else {
-        response += "exits to the ";
-    }
+    string response = "Exits:\n";
 
     int count = 0;
     for (auto exit : exits) {
         count++;
-        response += exit.first;
-
-        // If second last exit, add "and"
-        if (count == exits.size() - 1 && exits.size() > 1) {
-            response += " and ";
-        }
-            // If not the last exit, add ", "
-        else if (count != exits.size()) {
-            response += ", ";
-        }
+        response += "- "+exit.first+"\n";
     }
+
     return response;
 }
