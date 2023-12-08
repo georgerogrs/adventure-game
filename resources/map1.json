@@ -30,13 +30,13 @@
   {
     "id":"zombie",
     "desc":"The zombie looks like it wants to attack you.",
-    "aggressiveness":50,
+    "aggressiveness":10,
     "initialroom":"room2",
     "killedby":["gun"]
   },{
       "id":"ogre",
       "desc":"The ogre looks like it wants to attack you.",
-      "aggressiveness":20,
+      "aggressiveness":30,
       "initialroom":"room2",
       "killedby":["spanner"]
     }
@@ -46,7 +46,7 @@
   },
   "objective":{
     "type":"kill",
-    "what":["zombie"]
+    "what":["zombie", "ogre"]
   }
 }
 

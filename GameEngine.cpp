@@ -8,6 +8,7 @@
 #include "Room.h"
 #include "Object.h"
 #include "Player.h"
+#include "Objective.h"
 
 
 using json = nlohmann::json;
@@ -87,7 +88,6 @@ int main() {
         string enemyDesc = enemy["desc"];
         int enemyAgg = enemy["aggressiveness"];
 
-
         vector<string> enemyKilledBy = enemy["killedby"];
 
         for (auto pair : roomMap) {
@@ -113,14 +113,29 @@ int main() {
 
     Player player(initialRoom);
 
-    bool endgame = true;
+    //Create a win condition
+    string objectiveType = mapJson["objective"]["type"];
+    vector<string> taskList;
+    for (const auto& task : mapJson["objective"]["what"]) {
+        string taskToAdd = task;
+        taskList.push_back(taskToAdd);
+    }
 
+    Objective objective(objectiveType, taskList);
+
+    bool endgame = false;
 
     cout << player.getRoom().getDescription()<< endl;
 
 
     //Game starts
-    while (endgame) {
+    while (!endgame) {
+
+//        cout << objective.getType() << endl;
+//        for (auto task: objective.getTasks()) {
+//            cout << task << endl;
+//        }
+
         string userInput;
 
         getline(cin, userInput);
@@ -139,10 +154,26 @@ int main() {
 
         //Checks if user has typed "go"
         if (userInput.substr(0, 2) == "go") {
-            string direction = userInput.substr(2);
-            //Removes all whitespace
-            trim(direction);
-            cout << player.move(direction) << endl;
+
+            //Have all enemies attack player
+            int isAlive = true;
+            for (auto enemy : player.getRoom().getEnemies()) {
+                if (isAlive) {
+                    bool survive = player.hurt(enemy->getAggression());
+                    if (!survive) {
+                        cout << enemy->getName() << " attacks and you die." << endl;
+                        endgame = true;
+                        isAlive = false;
+                    }
+                }
+            }
+
+            if (isAlive) {
+                string direction = userInput.substr(2);
+                //Removes all whitespace
+                trim(direction);
+                cout << player.move(direction) << endl;
+            }
         }
 
         if (userInput.substr(0, 4) == "take") {
@@ -166,14 +197,24 @@ int main() {
 
                 if (player.kill(enemyName, weaponName) == "ENDGAME") {
                     cout << "The weapon "+weaponName+" has no affect on "+enemyName+"." << endl;
-                    cout << "The "+enemyName+" attacks you and you die.";
-                    endgame = false;
-                } else if (player.kill(enemyName, weaponName) == "WIN") {
+                    cout << "The "+enemyName+" attacks you and you die."<< endl;
+                    endgame = true;
+                } else if (player.kill(enemyName, weaponName) == "ENEMYKILLED") {
                     //Finds matching enemy and removes it
                     for (auto enemy : player.getRoom().getEnemies()) {
                         if (enemy->getName() == enemyName) {
                             player.getRoom().removeEnemy(enemy);
                             cout << enemyName+" killed." << endl;
+
+                            //Checks if task has been completed
+                            if (objective.getType() == "kill") {
+                                for (auto task : objective.getTasks()) {
+                                    if (enemyName == task) {
+                                        //Task completed
+                                        objective.removeTask(task);
+                                    }
+                                }
+                            }
                         }
                     }
                 } else {
@@ -183,7 +224,13 @@ int main() {
         }
 
         if (userInput == "quit game") {
-            endgame = false;
+            endgame = true;
+        }
+
+        //Check if objectives.isEmpty() -> If so, win game!
+        if (objective.getTasks().empty()) {
+            cout << "You have won the game!" << endl;
+            endgame = true;
         }
     }
     cout << "GAME OVER";

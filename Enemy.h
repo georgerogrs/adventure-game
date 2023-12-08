@@ -15,14 +15,11 @@ public:
     std::string getDescription();
     int getAggression();
     std::vector<std::string> getKilledBy();
-
-    void die();
 private:
     std::string name;
     std::string description;
     int aggression;
     std::vector<std::string> killedBy;
-    bool isAlive;
 };
 
 

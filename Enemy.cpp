@@ -11,7 +11,6 @@ Enemy::Enemy(std::string name, std::string description, int aggression, std::vec
     this->description = description;
     this->aggression = aggression;
     this->killedBy = killedBy;
-    this->isAlive = true;
 }
 
 string Enemy::getName() {
@@ -29,8 +28,4 @@ int Enemy::getAggression() {
 
 vector<string> Enemy::getKilledBy() {
     return killedBy;
-}
-
-void Enemy::die() {
-    isAlive = false;
 }

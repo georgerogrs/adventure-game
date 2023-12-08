@@ -35,6 +35,10 @@ string what
 2. Collect a set of objects
 3. Arrive at a room
 
+When an action is completed:
+- Check if it matches objective
+- If yes, remove from task
+
 
 GAME
  - Continuous while loop asking for user input

@@ -22,6 +22,8 @@ public:
     std::string move(std::string direction);
 
     std::string kill(std::string who, std::string what);
+
+    bool hurt(int attack);
 private:
     Room* room;
     std::vector<Object*> inventory;

@@ -5,14 +5,16 @@
 #include <algorithm>
 #include <string>
 #include <vector>
+#include <random>
 
 #include "Player.h"
 
 using namespace std;
 
 const string GAMEOVER = "ENDGAME";
+const string ENEMYKILLED = "ENEMYKILLED";
 
-const string ENEMYKILLED = "WIN";
+std::mt19937 rng(time(NULL));
 
 Player::Player(Room* initialRoom) {
     this->room = initialRoom;
@@ -55,6 +57,7 @@ string Player::take(string object) {
 
 
 string Player::move(string direction) {
+
     for (auto exit : room->getExits()) {
         if (exit.first == direction) {
             room = exit.second;
@@ -97,4 +100,17 @@ string Player::kill(std::string who, std::string what) {
     }
 
     return GAMEOVER;
+}
+
+bool Player::hurt(int attack) {
+    uniform_int_distribution<int> dist(1, 100);
+    int chance = dist(rng);
+
+//    cout << attack << " : " << chance << endl;
+
+    if (chance < attack) {
+        return false;
+    } else {
+        return true;
+    }
 }

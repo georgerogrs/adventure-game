@@ -12,6 +12,8 @@ add_executable(adventure_game GameEngine.cpp
         Object.cpp
         Enemy.cpp
         Enemy.h
+        Objective.cpp
+        Objective.h
 )
 
 include_directories(include)
