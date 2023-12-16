@@ -377,7 +377,7 @@ int main() {
                     for (auto enemy : player.getRoom().getEnemies()) {
                         if (enemy->getName() == enemyName) {
                             player.getRoom().removeEnemy(enemy);
-                            cout << enemyName + " killed." << endl;
+                            cout << "You kill the "+enemyName+"." << endl;
 
                             //Checks if task has been completed
                             if (objective.getType() == "kill") {

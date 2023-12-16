@@ -76,7 +76,7 @@ string Player::take(string object) {
             // Remove object from room
             inventory.push_back(*it);
             objectsInRoom.erase(it);
-            return "You picked up the " +  object;
+            return "You picked up the " +  object+".";
         }
     }
 

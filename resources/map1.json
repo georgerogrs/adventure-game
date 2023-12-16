@@ -16,37 +16,23 @@
     "id":"gun",
     "desc":"It looks like you can use it to shoot and kill things.",
     "initialroom":"room1"
-  }, {
-      "id":"spanner",
-      "desc":"A useless rusty spanner.",
-      "initialroom":"room1"
-    },  {
-      "id":"wrench",
-      "desc":"A useless rusty wrench.",
-      "initialroom":"room1"
-    }
+  }
   ],
   "enemies":[
   {
     "id":"zombie",
     "desc":"The zombie looks like it wants to attack you.",
-    "aggressiveness":10,
+    "aggressiveness":50,
     "initialroom":"room2",
     "killedby":["gun"]
-  },{
-      "id":"ogre",
-      "desc":"The ogre looks like it wants to attack you.",
-      "aggressiveness":30,
-      "initialroom":"room2",
-      "killedby":["spanner"]
-    }
+  }
   ],
   "player":{
     "initialroom":"room1"
   },
   "objective":{
     "type":"kill",
-    "what":["zombie", "ogre"]
+    "what":["zombie"]
   }
 }
 
